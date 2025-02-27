@@ -14,7 +14,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     environment:
-      name: github-pages  # Ensure the environment is specified
+      name: github-pages
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -35,7 +35,9 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./docs/build/html  # Corrected to the correct build path
+          path: ./docs/build/html
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
+        with:
+          branch: gh-pages  # Deploy to the gh-pages branch instead of main
